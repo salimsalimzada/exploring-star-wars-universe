@@ -1,1 +1,1 @@
-echo "some foo bar"
+npm run build
