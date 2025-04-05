@@ -5,9 +5,9 @@ This repository contains the implementation of a technical task provided by PASH
 ## Installation
 
 ```bash
-git clone git@github.com:salimsalimzada/exploring-star-wars-universe.git
+  git clone git@github.com:salimsalimzada/exploring-star-wars-universe.git
   cd exploring-star-wars-universe
-  npm install exploring-star-wars-universe
+  npm install
   npm run dev
 ```
 
