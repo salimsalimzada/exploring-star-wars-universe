@@ -8,6 +8,8 @@ const Planets = lazy(() => import("@pages/planets/page"));
 const Species = lazy(() => import("@pages/species/page"));
 const Starships = lazy(() => import("@pages/starships/page"));
 const Vehicles = lazy(() => import("@pages/vehicles/page"));
+const FilmDetailsCard = lazy(() => import("@pages/films/components/film-details-card"));
+
 function App() {
   return (
     <Suspense fallback={<h3>Loading...</h3>}>
@@ -15,6 +17,7 @@ function App() {
         <Route path="/" element={<AppLayout />}>
           <Route index element={<Navigate to="/films" replace />} />
           <Route path="films" element={<Films />} />
+          <Route path="films/:id" element={<FilmDetailsCard />} />
           <Route path="people" element={<People />} />
           <Route path="planets" element={<Planets />} />
           <Route path="species" element={<Species />} />

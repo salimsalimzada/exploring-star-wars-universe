@@ -1,46 +1,38 @@
-import { ForwardedRef, forwardRef, ReactNode } from "react";
-
-enum IconPosition {
-  Left = "left",
-  Right = "right",
-}
+import { ChangeEvent, ForwardedRef, forwardRef } from "react";
 
 type InputProps = {
   htmlFor?: string;
-  id: string;
-  name: string;
-  icon?: ReactNode;
-  iconPosition?: Lowercase<keyof typeof IconPosition>;
+  id?: string;
+  name?: string;
   placeholder?: string;
   label?: string;
+  className?: string;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  value?: string;
 };
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
   (
-    { label, id, name, icon, iconPosition = "right", placeholder = "", htmlFor = "" },
+    { label, id, name, placeholder, htmlFor, className = "", value, onChange },
     ref: ForwardedRef<HTMLInputElement>,
   ) => {
     return (
-      <div className="relative">
+      <div className="max-w-md mx-auto">
         {label && (
           <label htmlFor={htmlFor} className="block text-sm font-medium text-gray-700 mb-2">
             {label}
           </label>
         )}
-        <div
-          className={`flex items-center border-2 rounded-md ${iconPosition === IconPosition.Left ? "pl-3" : "pr-3"}`}
-        >
-          {iconPosition === IconPosition.Left && <div className="absolute left-2">{icon}</div>}
-          <input
-            ref={ref}
-            type="text"
-            id={id}
-            name={name}
-            placeholder={placeholder}
-            className="w-full p-2 pl-10 pr-10 text-sm text-gray-900 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          {iconPosition === IconPosition.Right && <div className="absolute right-2">{icon}</div>}
-        </div>
+        <input
+          ref={ref}
+          type="text"
+          id={id}
+          name={name}
+          value={value}
+          placeholder={placeholder}
+          onChange={onChange}
+          className={`w-full h-12 py-2 px-6 text-base text-gray-900 bg-gray-50 border-1 border-gray-600 rounded-full focus:outline-none ${className}`}
+        />
       </div>
     );
   },

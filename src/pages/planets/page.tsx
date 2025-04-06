@@ -1,4 +1,4 @@
 function Planets() {
-  return <h3>Planets</h3>;
+  return <div></div>;
 }
 export default Planets;
