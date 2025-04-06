@@ -1,4 +1,5 @@
-import { NavLink } from "react-router";
+import Button from "@ui/button";
+import { NavLink, useNavigate } from "react-router";
 
 const MENU_LIST = [
   { path: "/films", text: "Films", id: 1 },
@@ -10,10 +11,17 @@ const MENU_LIST = [
 ];
 
 function PageHeader() {
+  const navigate = useNavigate();
   return (
     <header className="text-white py-4 px-6">
       <div className="flex justify-between items-center">
-        <h3 className="text-xl font-lilita text-orange">STAR WARS</h3>
+        <Button
+          onClick={() => navigate("/films")}
+          variant="text"
+          className="text-xl font-lilita text-star-wars-orange"
+        >
+          STAR WARS
+        </Button>
 
         <nav className="space-x-6">
           {MENU_LIST.map((item) => (
@@ -21,7 +29,7 @@ function PageHeader() {
               key={item.id}
               to={item.path}
               className={({ isActive }) =>
-                `font-roboto-mono text-black ${isActive ? "text-greeny" : "hover:text-greeny"}`
+                `font-roboto-mono text-black ${isActive ? "text-jungle-green font-medium" : "hover:text-jungle-green"}`
               }
             >
               {item.text}

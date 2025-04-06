@@ -10,9 +10,9 @@ body {
 }
 
 @theme {
-  --color-orange: #f08c00;
-  --color-main-bg: #fffce8;
-  --color-greeny: #2f9e44;
   --font-lilita: "Lilita One", cursive;
   --font-roboto-mono: "Roboto Mono", monospace;
+  --color-star-wars-orange: #f08c00;
+  --color-bg-main: #fffce8;
+  --color-jungle-green: #2f9e44;
 }

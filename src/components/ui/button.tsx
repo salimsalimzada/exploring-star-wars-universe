@@ -11,11 +11,15 @@ type ButtonProps = {
   onClick?: () => void;
   variant?: ButtonVariant;
   children: React.ReactNode;
+  className?: string;
 };
 
-function Button({ onClick, variant = "default", children }: ButtonProps) {
+function Button({ onClick, variant = "default", className, children }: ButtonProps) {
   return (
-    <button className={`px-4 py-2 rounded-md ${buttonStyles[variant]}`} onClick={onClick}>
+    <button
+      className={`px-4 py-2 rounded-md ${className} ${buttonStyles[variant]}`}
+      onClick={onClick}
+    >
       {children}
     </button>
   );
