@@ -2,6 +2,12 @@
 
 This repository contains the implementation of a technical task provided by PASHA Insurance as part of their interview process. The code is for evaluation purposes only and is **not intended for production use**.
 
+## 🖼️ Wireframe
+
+Here's the initial wireframe for the **Planets** list and details pages:
+
+![Wireframe](./src/assets/planet-page-wireframe.png)
+
 ## Installation
 
 ```bash
