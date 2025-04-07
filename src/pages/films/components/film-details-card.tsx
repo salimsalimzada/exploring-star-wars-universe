@@ -76,9 +76,9 @@ function FilmDetailsCard() {
                 <div>
                   <h3 className="font-bold">Characters</h3>
                   <ul className="list-disc pl-5 space-y-1">
-                    {characters?.slice(0, 7)?.map((character, index) => (
+                    {characters?.slice(0, 7)?.map((characterUrl, index) => (
                       <li>
-                        <NavLink to={`/people/${extractIdFromUrl(character)}`}>
+                        <NavLink to={`/people/${extractIdFromUrl(characterUrl)}`}>
                           Character {index + 1}
                         </NavLink>
                       </li>
@@ -88,9 +88,9 @@ function FilmDetailsCard() {
                 <div>
                   <h3 className="font-bold">Planets</h3>
                   <ul className="list-disc pl-5 space-y-1">
-                    {planets?.slice(0, 5).map((planet, index) => (
+                    {planets?.slice(0, 5).map((planetUrl, index) => (
                       <li>
-                        <NavLink to={`/planets/${extractIdFromUrl(planet)}`}>
+                        <NavLink to={`/planets/${extractIdFromUrl(planetUrl)}`}>
                           Planet {index + 1}
                         </NavLink>
                       </li>
@@ -100,9 +100,9 @@ function FilmDetailsCard() {
                 <div>
                   <h3 className="font-bold">Species</h3>
                   <ul className="list-disc pl-5 space-y-1">
-                    {starships?.slice(0, 6).map((starship, index) => (
+                    {starships?.slice(0, 6).map((starshipUrl, index) => (
                       <li>
-                        <NavLink to={`/starships/${extractIdFromUrl(starship)}`}>
+                        <NavLink to={`/starships/${extractIdFromUrl(starshipUrl)}`}>
                           Starships {index + 1}
                         </NavLink>
                       </li>

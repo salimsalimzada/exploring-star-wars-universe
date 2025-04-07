@@ -91,9 +91,9 @@ function PersonDetails() {
                   <div>
                     <h3 className="font-bold">Films</h3>
                     <ul className="list-disc pl-5 space-y-1">
-                      {films?.slice(0, 7)?.map((film, index) => (
+                      {films?.slice(0, 7)?.map((filmUrl, index) => (
                         <li key={`randomized-id-${index}`}>
-                          <NavLink to={`/films/${extractIdFromUrl(film)}`}>
+                          <NavLink to={`/films/${extractIdFromUrl(filmUrl)}`}>
                             Film {index + 1}
                           </NavLink>
                         </li>
@@ -105,9 +105,9 @@ function PersonDetails() {
                   <div>
                     <h3 className="font-bold">Planets</h3>
                     <ul className="list-disc pl-5 space-y-1">
-                      {vehicles?.slice(0, 5).map((vehicle, index) => (
+                      {vehicles?.slice(0, 5).map((vehicleUrl, index) => (
                         <li key={`randomized-id-${index}`}>
-                          <NavLink to={`/vehicles/${extractIdFromUrl(vehicle)}`}>
+                          <NavLink to={`/vehicles/${extractIdFromUrl(vehicleUrl)}`}>
                             Vehicle {index + 1}
                           </NavLink>
                         </li>
@@ -119,9 +119,9 @@ function PersonDetails() {
                   <div>
                     <h3 className="font-bold">Species</h3>
                     <ul className="list-disc pl-5 space-y-1">
-                      {starships?.slice(0, 6).map((starship, index) => (
+                      {starships?.slice(0, 6).map((starshipUrl, index) => (
                         <li key={`randomized-id-${index}`}>
-                          <NavLink to={`/starships/${extractIdFromUrl(starship)}`}>
+                          <NavLink to={`/starships/${extractIdFromUrl(starshipUrl)}`}>
                             Starships {index + 1}
                           </NavLink>
                         </li>
