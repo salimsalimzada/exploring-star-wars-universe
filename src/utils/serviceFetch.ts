@@ -8,7 +8,7 @@ export const serviceFetch = async <TResponse, TRequest = undefined>({
   headers = {},
   body,
 }: ApiConfig<TRequest>): Promise<TResponse> => {
-  const baseUrl = import.meta.env.BASE_URL;
+  const baseUrl = import.meta.env.VITE_BASE_URL;
   const url = new URL(`${baseUrl}${endpoint}`);
 
   const requestConfig: RequestInit = {
