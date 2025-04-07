@@ -14,7 +14,7 @@ export enum HttpMethods {
 export type Primitive = string | number | boolean | null;
 
 export interface ApiConfig<T> {
-  method?: HttpMethods;
+  method?: keyof typeof HttpMethods;
   endpoint: string;
   body?: T;
   params?: Primitive;
