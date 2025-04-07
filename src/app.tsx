@@ -10,6 +10,7 @@ const Starships = lazy(() => import("@pages/starships/page"));
 const Vehicles = lazy(() => import("@pages/vehicles/page"));
 const NotFound = lazy(() => import("@components/shared/not-found"));
 const FilmDetailsCard = lazy(() => import("@pages/films/components/film-details-card"));
+const PersonDetailsCard = lazy(() => import("@pages/people/components/person-details-card"));
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="starships" element={<Starships />} />
           <Route path="vehicles" element={<Vehicles />} />
           <Route path="films/:id" element={<FilmDetailsCard />} />
+          <Route path="people/:id" element={<PersonDetailsCard />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
