@@ -1,3 +1,5 @@
+import { BasePaginatedResponse } from "./common";
+
 export interface Film {
   title: string;
   episode_id: number;
@@ -15,9 +17,4 @@ export interface Film {
   url: string;
 }
 
-export interface FilmResponseInfo {
-  count: null;
-  next: null;
-  previous: null;
-  results: Film[];
-}
+export type FilmResponseInfo = BasePaginatedResponse<Film>;
