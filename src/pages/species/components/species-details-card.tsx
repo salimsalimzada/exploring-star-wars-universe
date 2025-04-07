@@ -1,11 +1,11 @@
 import { InfoRow } from "@components/shared/info-row";
+import { LinkListItem } from "@components/shared/link-list-item";
 import { getSpeciesById } from "@services/species-service";
 import { useQuery } from "@tanstack/react-query";
 import Button from "@ui/button";
 import Card from "@ui/card";
 import Skeleton from "@ui/skeleton";
-import { extractIdFromUrl } from "@utils/common";
-import { NavLink, useNavigate, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 function SpeciesDetailsCard() {
   const { id = "" } = useParams();
@@ -79,35 +79,11 @@ function SpeciesDetailsCard() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <h3 className="font-bold">Known Residents</h3>
-                  <ul className="list-disc space-y-1">
-                    {people?.slice(0, 5).map((personUrl, index) => (
-                      <li className="list-none">
-                        -{" "}
-                        <NavLink
-                          to={`/people/${extractIdFromUrl(personUrl)}`}
-                          className="text-blue-600 underline hover:text-blue-800"
-                        >
-                          Resident {index + 1}
-                        </NavLink>
-                      </li>
-                    ))}
-                  </ul>
+                  <LinkListItem data={people?.slice(0, 5)} basePath="people" label="Resident" />
                 </div>
                 <div>
                   <h3 className="font-bold">Featured In Films</h3>
-                  <ul className="list-disc space-y-1">
-                    {films?.slice(0, 6).map((filmUrl, index) => (
-                      <li className="list-none">
-                        -{" "}
-                        <NavLink
-                          to={`/films/${extractIdFromUrl(filmUrl)}`}
-                          className="text-blue-600 underline hover:text-blue-800"
-                        >
-                          Starships {index + 1}
-                        </NavLink>
-                      </li>
-                    ))}
-                  </ul>
+                  <LinkListItem data={films?.slice(0, 6)} basePath="films" label="Starships" />
                 </div>
               </div>
             </div>

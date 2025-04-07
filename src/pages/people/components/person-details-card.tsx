@@ -1,4 +1,5 @@
 import { InfoRow } from "@components/shared/info-row";
+import { LinkListItem } from "@components/shared/link-list-item";
 import { getPersonById } from "@services/person-service";
 import { useQuery } from "@tanstack/react-query";
 import Button from "@ui/button";
@@ -33,7 +34,6 @@ function PersonDetailsCard() {
     starships = [],
     homeworld = "",
   } = data ?? {};
-  console.log({ homeworld });
   const PERSON_DETAILS_INFO = [
     { label: "Height", value: height },
     { label: "Mass", value: mass },
@@ -49,7 +49,7 @@ function PersonDetailsCard() {
           to={`/films/${extractIdFromUrl(homeworld)}`}
           className="text-blue-600 underline hover:text-blue-800"
         >
-          Planets {extractIdFromUrl(homeworld)}
+          Planets-{extractIdFromUrl(homeworld)}
         </NavLink>
       ),
     },
@@ -91,60 +91,22 @@ function PersonDetailsCard() {
             </div>
             <div className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                {films.length > 0 && (
-                  <div>
-                    <h3 className="font-bold">Films</h3>
-                    <ul className="list-disc space-y-1">
-                      {films?.slice(0, 7)?.map((filmUrl, index) => (
-                        <li key={`randomized-id-${index}`} className="list-none">
-                          -{" "}
-                          <NavLink
-                            to={`/films/${extractIdFromUrl(filmUrl)}`}
-                            className="text-blue-600 underline hover:text-blue-800"
-                          >
-                            Film {index + 1}
-                          </NavLink>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-                {vehicles.length > 0 && (
-                  <div>
-                    <h3 className="font-bold">Planets</h3>
-                    <ul className="list-disc space-y-1">
-                      {vehicles?.slice(0, 5).map((vehicleUrl, index) => (
-                        <li key={`randomized-id-${index}`} className="list-none">
-                          -{" "}
-                          <NavLink
-                            to={`/vehicles/${extractIdFromUrl(vehicleUrl)}`}
-                            className="text-blue-600 underline hover:text-blue-800"
-                          >
-                            Vehicle {index + 1}
-                          </NavLink>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-                {starships.length > 0 && (
-                  <div>
-                    <h3 className="font-bold">Species</h3>
-                    <ul className="list-disc space-y-1">
-                      {starships?.slice(0, 6).map((starshipUrl, index) => (
-                        <li key={`randomized-id-${index}`} className="list-none">
-                          -{" "}
-                          <NavLink
-                            to={`/starships/${extractIdFromUrl(starshipUrl)}`}
-                            className="text-blue-600 underline hover:text-blue-800"
-                          >
-                            Starships {index + 1}
-                          </NavLink>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+                <div>
+                  <h3 className="font-bold">Films</h3>
+                  <LinkListItem data={films?.slice(0, 7)} basePath="films" label="Film" />
+                </div>
+                <div>
+                  <h3 className="font-bold">Vehicles</h3>
+                  <LinkListItem data={vehicles?.slice(0, 5)} basePath="vehicles" label="Vehicle" />
+                </div>
+                <div>
+                  <h3 className="font-bold">Starships</h3>
+                  <LinkListItem
+                    data={starships?.slice(0, 6)}
+                    basePath="starships"
+                    label="Starships"
+                  />
+                </div>
               </div>
             </div>
           </div>

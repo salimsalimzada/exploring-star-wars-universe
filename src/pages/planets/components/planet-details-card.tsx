@@ -1,11 +1,11 @@
 import { InfoRow } from "@components/shared/info-row";
+import { LinkListItem } from "@components/shared/link-list-item";
 import { getPlanetById } from "@services/planet-service";
 import { useQuery } from "@tanstack/react-query";
 import Button from "@ui/button";
 import Card from "@ui/card";
 import Skeleton from "@ui/skeleton";
-import { extractIdFromUrl } from "@utils/common";
-import { NavLink, useNavigate, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 function PlanetDetailsCard() {
   const { id = "" } = useParams();
@@ -87,42 +87,14 @@ function PlanetDetailsCard() {
             </div>
             <div className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {residents.length > 0 && (
-                  <div>
-                    <h3 className="font-bold">Known Residents</h3>
-                    <ul className="list-disc space-y-1">
-                      {residents?.slice(0, 5).map((residentUrl, index) => (
-                        <li className="list-none">
-                          -{" "}
-                          <NavLink
-                            to={`/people/${extractIdFromUrl(residentUrl)}`}
-                            className="text-blue-600 underline hover:text-blue-800"
-                          >
-                            Resident {index + 1}
-                          </NavLink>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-                {films.length > 0 && (
-                  <div>
-                    <h3 className="font-bold">Featured In Films</h3>
-                    <ul className="list-disc space-y-1">
-                      {films?.slice(0, 6).map((filmUrl, index) => (
-                        <li className="list-none">
-                          -{" "}
-                          <NavLink
-                            to={`/films/${extractIdFromUrl(filmUrl)}`}
-                            className="text-blue-600 underline hover:text-blue-800"
-                          >
-                            Starships {index + 1}
-                          </NavLink>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+                <div>
+                  <h3 className="font-bold">Known Residents</h3>
+                  <LinkListItem data={residents?.slice(0, 5)} basePath="people" label="Resident" />
+                </div>
+                <div>
+                  <h3 className="font-bold">Featured In Films</h3>
+                  <LinkListItem data={films?.slice(0, 6)} basePath="films" label="Film" />
+                </div>
               </div>
             </div>
           </div>

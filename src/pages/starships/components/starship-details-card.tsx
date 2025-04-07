@@ -1,11 +1,11 @@
 import { InfoRow } from "@components/shared/info-row";
+import { LinkListItem } from "@components/shared/link-list-item";
 import { getStarshipById } from "@services/starship-service";
 import { useQuery } from "@tanstack/react-query";
 import Button from "@ui/button";
 import Card from "@ui/card";
 import Skeleton from "@ui/skeleton";
-import { extractIdFromUrl } from "@utils/common";
-import { NavLink, useNavigate, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 function StarshipDetailsCard() {
   const { id = "" } = useParams();
@@ -79,35 +79,11 @@ function StarshipDetailsCard() {
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 <div>
                   <h3 className="font-bold">Films</h3>
-                  <ul className="list-disc space-y-1">
-                    {films?.slice(0, 7)?.map((filmUrl, index) => (
-                      <li key={`randomized-id-${index}`} className="list-none">
-                        -{" "}
-                        <NavLink
-                          to={`/films/${extractIdFromUrl(filmUrl)}`}
-                          className="text-blue-600 underline hover:text-blue-800"
-                        >
-                          Film {index + 1}
-                        </NavLink>
-                      </li>
-                    ))}
-                  </ul>
+                  <LinkListItem data={films?.slice(0, 7)} basePath="films" label="Film" />
                 </div>
                 <div>
                   <h3 className="font-bold">Pilots</h3>
-                  <ul className="list-disc space-y-1">
-                    {pilots?.slice(0, 5).map((pilotUrl, index) => (
-                      <li key={`randomized-id-${index}`} className="list-none">
-                        -{" "}
-                        <NavLink
-                          to={`/people/${extractIdFromUrl(pilotUrl)}`}
-                          className="text-blue-600 underline hover:text-blue-800"
-                        >
-                          Vehicle {index + 1}
-                        </NavLink>
-                      </li>
-                    ))}
-                  </ul>
+                  <LinkListItem data={pilots?.slice(0, 5)} basePath="people" label="Person" />
                 </div>
               </div>
             </div>
