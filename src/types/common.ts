@@ -21,3 +21,10 @@ export interface ApiConfig<T> {
   query?: Record<string, Primitive | Primitive[]>;
   headers?: Record<string, string>;
 }
+
+export interface BasePaginatedResponse<T> {
+  count: number | null;
+  next: string | null;
+  previous: string | null;
+  results: T[];
+}
