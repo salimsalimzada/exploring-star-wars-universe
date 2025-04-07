@@ -1,7 +1,7 @@
 type ButtonVariant = "default" | "outlined" | "text";
 
 const buttonStyles: Record<ButtonVariant, string> = {
-  default: "bg-black text-white hover:bg-gray-800",
+  default: "bg-black text-white cursor-pointer",
   text: "bg-transparent text-black  hover:cursor-pointer",
   outlined:
     "border border-black rounded bg-transparent hover:bg-gray-50 hover:cursor-pointer hover:scale-105 text-black transition-all duration-300",

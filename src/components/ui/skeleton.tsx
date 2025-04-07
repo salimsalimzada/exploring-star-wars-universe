@@ -5,13 +5,20 @@ type SkeletonProps = {
   active?: boolean;
   children?: ReactNode;
   rows?: number;
+  className?: string;
 };
 
-function Skeleton({ loading = false, active = false, children, rows = 3 }: SkeletonProps) {
+function Skeleton({
+  loading = false,
+  active = false,
+  children,
+  rows = 3,
+  className,
+}: SkeletonProps) {
   if (!loading) return <>{children}</>;
 
   return (
-    <div className="space-y-2 max-w-2xs rounded-lg shadow-md">
+    <div className={`space-y-2 max-w-2xs rounded-lg bg-white ${className}`}>
       {Array.from({ length: rows }).map((_, index) => (
         <div
           key={index}
