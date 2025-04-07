@@ -1,3 +1,4 @@
+import { InfoRow } from "@components/shared/info-row";
 import { getFilmById } from "@services/film-service";
 import { useQuery } from "@tanstack/react-query";
 import Button from "@ui/button";
@@ -30,6 +31,13 @@ function FilmDetailsCard() {
     episode_id: episodeId,
   } = data ?? {};
 
+  const FILM_DETAILS_INFO = [
+    { label: "Title", value: title },
+    { label: "Episode", value: episodeId },
+    { label: "Director", value: director },
+    { label: "Producer", value: producer },
+    { label: "Release Date", value: releaseDate },
+  ];
   return (
     <div className="p-4 flex justify-center items-center">
       <Skeleton loading={isPending} active className="w-full max-w-3xl" rows={18}>
@@ -55,21 +63,13 @@ function FilmDetailsCard() {
               <div>
                 <h3 className="font-bold">Basic Info</h3>
                 <ul className="space-y-1">
-                  <li>
-                    <strong>Title:</strong> {title}
-                  </li>
-                  <li>
-                    <strong>Episode:</strong> {episodeId}
-                  </li>
-                  <li>
-                    <strong>Director:</strong> {director}
-                  </li>
-                  <li>
-                    <strong>Producer:</strong> {producer}
-                  </li>
-                  <li>
-                    <strong>Release Date:</strong> {releaseDate}
-                  </li>
+                  {FILM_DETAILS_INFO.map((detail, index) => (
+                    <InfoRow
+                      key={`my-unique-key-${index}`}
+                      label={detail.label}
+                      value={detail.value}
+                    />
+                  ))}
                 </ul>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">

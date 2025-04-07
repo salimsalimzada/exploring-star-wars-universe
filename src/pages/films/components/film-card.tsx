@@ -1,3 +1,4 @@
+import { InfoRow } from "@components/shared/info-row";
 import { Film } from "@custom-types/film";
 import Button from "@ui/button";
 import Card from "@ui/card";
@@ -16,12 +17,19 @@ export const FilmCard = ({ filmData }: FilmCardProps) => {
     producer,
     url,
   } = filmData;
+
+  const FILM_INFO = [
+    { label: "Episode", value: episodeId },
+    { label: "Director", value: director },
+    { label: "Producers", value: producer },
+    { label: "Release Date", value: releaseDate },
+  ];
   return (
     <Card
       className="border-1 border-gray-500 shadow-sm"
       title={
         <div className="flex justify-between w-full flex-wrap items-baseline">
-          <h5 className={`text-xl fon{t-bold ${title.length > 10 ? "truncate" : ""}`}>{title}</h5>
+          <h5 className={`text-xl font-bold { ${title.length > 10 ? "truncate" : ""}`}>{title}</h5>
           <p className="text-md">{getElapsedTime(releaseDate)}</p>
         </div>
       }
@@ -35,19 +43,9 @@ export const FilmCard = ({ filmData }: FilmCardProps) => {
     >
       <div className="p-4 space-y-3">
         <div className="space-y-2">
-          <p>
-            <span className="font-bold">Episode:</span> {episodeId}
-          </p>
-          <p>
-            <span className="font-bold">Director:</span> {director}
-          </p>
-          <p>
-            <span className="font-bold">Producers:</span>
-            {producer}
-          </p>
-          <p>
-            <span className="font-bold">Release Date:</span> {releaseDate}
-          </p>
+          {FILM_INFO.map((film) => (
+            <InfoRow key={film.value} label={film.label} value={film.value} />
+          ))}
         </div>
       </div>
     </Card>
