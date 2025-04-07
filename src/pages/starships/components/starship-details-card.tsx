@@ -77,42 +77,38 @@ function StarshipDetailsCard() {
             </div>
             <div className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                {films.length > 0 && (
-                  <div>
-                    <h3 className="font-bold">Films</h3>
-                    <ul className="list-disc pl-5 space-y-1">
-                      {films?.slice(0, 7)?.map((film, index) => (
-                        <li key={`randomized-id-${index}`} className="list-none">
-                          -{" "}
-                          <NavLink
-                            to={`/films/${extractIdFromUrl(film)}`}
-                            className="text-blue-600 underline hover:text-blue-800"
-                          >
-                            Film {index + 1}
-                          </NavLink>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-                {pilots.length > 0 && (
-                  <div>
-                    <h3 className="font-bold">Pilots</h3>
-                    <ul className="list-disc pl-5 space-y-1">
-                      {pilots?.slice(0, 5).map((pilotUrl, index) => (
-                        <li key={`randomized-id-${index}`} className="list-none">
-                          -{" "}
-                          <NavLink
-                            to={`/people/${extractIdFromUrl(pilotUrl)}`}
-                            className="text-blue-600 underline hover:text-blue-800"
-                          >
-                            Vehicle {index + 1}
-                          </NavLink>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+                <div>
+                  <h3 className="font-bold">Films</h3>
+                  <ul className="list-disc space-y-1">
+                    {films?.slice(0, 7)?.map((filmUrl, index) => (
+                      <li key={`randomized-id-${index}`} className="list-none">
+                        -{" "}
+                        <NavLink
+                          to={`/films/${extractIdFromUrl(filmUrl)}`}
+                          className="text-blue-600 underline hover:text-blue-800"
+                        >
+                          Film {index + 1}
+                        </NavLink>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="font-bold">Pilots</h3>
+                  <ul className="list-disc space-y-1">
+                    {pilots?.slice(0, 5).map((pilotUrl, index) => (
+                      <li key={`randomized-id-${index}`} className="list-none">
+                        -{" "}
+                        <NavLink
+                          to={`/people/${extractIdFromUrl(pilotUrl)}`}
+                          className="text-blue-600 underline hover:text-blue-800"
+                        >
+                          Vehicle {index + 1}
+                        </NavLink>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
