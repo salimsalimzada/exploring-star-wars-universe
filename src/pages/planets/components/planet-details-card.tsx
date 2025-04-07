@@ -1,5 +1,5 @@
 import { InfoRow } from "@components/shared/info-row";
-import { getStarshipById } from "@services/starship-service";
+import { getPlanetById } from "@services/planet-service";
 import { useQuery } from "@tanstack/react-query";
 import Button from "@ui/button";
 import Card from "@ui/card";
@@ -7,38 +7,48 @@ import Skeleton from "@ui/skeleton";
 import { extractIdFromUrl } from "@utils/common";
 import { NavLink, useNavigate, useParams } from "react-router";
 
-function StarshipDetailsCard() {
+function PlanetDetailsCard() {
   const { id = "" } = useParams();
   const { isPending, data } = useQuery({
-    queryKey: ["starship", id],
-    queryFn: () => getStarshipById(id),
+    queryKey: ["film", id],
+    queryFn: () => getPlanetById(id),
     enabled: !!id,
   });
 
   const navigate = useNavigate();
 
   const {
-    name,
     created,
     url,
-    model,
-    manufacturer,
-    length,
-    cargo_capacity: cargoCapacity,
-    hyperdrive_rating: hyperdriveRating,
-    max_atmosphering_speed: maxAtmospheringSpeed,
-    consumables,
+    name,
+    climate,
+    terrain,
+    population,
+    gravity,
+    diameter,
+    surface_water: surfaceWater,
+    rotation_period: rotationPeriod,
+    orbital_period: orbitalPeriod,
+    residents = [],
     films = [],
-    pilots = [],
   } = data ?? {};
-  const STARSHIP_DETAILS_INFO = [
-    { label: "Model", value: model },
-    { label: "Manufacturer", value: manufacturer },
-    { label: "Length", value: length },
-    { label: "Max Atmosphering Speed", value: maxAtmospheringSpeed },
-    { label: "Cargo Capacity", value: cargoCapacity },
-    { label: "Consumables", value: consumables },
-    { label: "Hyperdrive Rating", value: hyperdriveRating },
+
+  const FILM_DETAILS_INFO = [
+    { label: "Name", value: name },
+    { label: "Climate", value: climate },
+    { label: "Terrain", value: terrain },
+    { label: "Population", value: population },
+    { label: "Gravity", value: gravity },
+    { label: "Diameter", value: diameter },
+    { label: "Surface Water", value: `${surfaceWater}%` },
+    {
+      label: "Rotation Period",
+      value: `${rotationPeriod} ${Number(rotationPeriod) > 1 ? "hours" : "hour"}`,
+    },
+    {
+      label: "Orbital Period",
+      value: `${orbitalPeriod} ${Number(orbitalPeriod) > 1 ? "hours" : "hour"}`,
+    },
   ];
   return (
     <div className="p-4 flex justify-center items-center">
@@ -46,10 +56,10 @@ function StarshipDetailsCard() {
         <Card
           title={
             <div className="text-lg font-roboto-mono flex justify-between items-center w-full">
-              <Button variant="text" onClick={() => navigate("/starships")}>
+              <Button variant="text" onClick={() => navigate("/planets")}>
                 Back
               </Button>
-              <p>Starship Details: {name}</p>
+              <p>Planet Details: {name}</p>
             </div>
           }
           className="font-roboto-mono text-sm max-w-4xl"
@@ -65,48 +75,48 @@ function StarshipDetailsCard() {
               <div>
                 <h3 className="font-bold">Basic Info</h3>
                 <ul className="space-y-1">
-                  {STARSHIP_DETAILS_INFO.map((detail, index) => (
+                  {FILM_DETAILS_INFO.map((detail, index) => (
                     <InfoRow
-                      key={`randomized-id-${index}`}
+                      key={`my-unique-key-${index}`}
                       label={detail.label}
-                      value={detail.value ?? ""}
+                      value={detail.value}
                     />
                   ))}
                 </ul>
               </div>
             </div>
             <div className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                {films.length > 0 && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {residents.length > 0 && (
                   <div>
-                    <h3 className="font-bold">Films</h3>
+                    <h3 className="font-bold">Known Residents</h3>
                     <ul className="list-disc pl-5 space-y-1">
-                      {films?.slice(0, 7)?.map((film, index) => (
-                        <li key={`randomized-id-${index}`} className="list-none">
+                      {residents?.slice(0, 5).map((residentUrl, index) => (
+                        <li className="list-none">
                           -{" "}
                           <NavLink
-                            to={`/films/${extractIdFromUrl(film)}`}
+                            to={`/people/${extractIdFromUrl(residentUrl)}`}
                             className="text-blue-600 underline hover:text-blue-800"
                           >
-                            Film {index + 1}
+                            Resident {index + 1}
                           </NavLink>
                         </li>
                       ))}
                     </ul>
                   </div>
                 )}
-                {pilots.length > 0 && (
+                {films.length > 0 && (
                   <div>
-                    <h3 className="font-bold">Pilots</h3>
+                    <h3 className="font-bold">Featured In Films</h3>
                     <ul className="list-disc pl-5 space-y-1">
-                      {pilots?.slice(0, 5).map((pilotUrl, index) => (
-                        <li key={`randomized-id-${index}`} className="list-none">
+                      {films?.slice(0, 6).map((filmUrl, index) => (
+                        <li className="list-none">
                           -{" "}
                           <NavLink
-                            to={`/people/${extractIdFromUrl(pilotUrl)}`}
+                            to={`/films/${extractIdFromUrl(filmUrl)}`}
                             className="text-blue-600 underline hover:text-blue-800"
                           >
-                            Vehicle {index + 1}
+                            Starships {index + 1}
                           </NavLink>
                         </li>
                       ))}
@@ -122,4 +132,4 @@ function StarshipDetailsCard() {
   );
 }
 
-export default StarshipDetailsCard;
+export default PlanetDetailsCard;

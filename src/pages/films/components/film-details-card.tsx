@@ -77,8 +77,12 @@ function FilmDetailsCard() {
                   <h3 className="font-bold">Characters</h3>
                   <ul className="list-disc pl-5 space-y-1">
                     {characters?.slice(0, 7)?.map((characterUrl, index) => (
-                      <li>
-                        <NavLink to={`/people/${extractIdFromUrl(characterUrl)}`}>
+                      <li className="list-none">
+                        -{" "}
+                        <NavLink
+                          to={`/people/${extractIdFromUrl(characterUrl)}`}
+                          className="text-blue-600 underline hover:text-blue-800"
+                        >
                           Character {index + 1}
                         </NavLink>
                       </li>
@@ -89,8 +93,12 @@ function FilmDetailsCard() {
                   <h3 className="font-bold">Planets</h3>
                   <ul className="list-disc pl-5 space-y-1">
                     {planets?.slice(0, 5).map((planetUrl, index) => (
-                      <li>
-                        <NavLink to={`/planets/${extractIdFromUrl(planetUrl)}`}>
+                      <li className="list-none">
+                        -{" "}
+                        <NavLink
+                          to={`/planets/${extractIdFromUrl(planetUrl)}`}
+                          className="text-blue-600 underline hover:text-blue-800"
+                        >
                           Planet {index + 1}
                         </NavLink>
                       </li>
@@ -101,8 +109,12 @@ function FilmDetailsCard() {
                   <h3 className="font-bold">Species</h3>
                   <ul className="list-disc pl-5 space-y-1">
                     {starships?.slice(0, 6).map((starshipUrl, index) => (
-                      <li>
-                        <NavLink to={`/starships/${extractIdFromUrl(starshipUrl)}`}>
+                      <li className="list-none">
+                        -{" "}
+                        <NavLink
+                          to={`/starships/${extractIdFromUrl(starshipUrl)}`}
+                          className="text-blue-600 underline hover:text-blue-800"
+                        >
                           Starships {index + 1}
                         </NavLink>
                       </li>

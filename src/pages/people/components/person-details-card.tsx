@@ -7,7 +7,7 @@ import Skeleton from "@ui/skeleton";
 import { extractIdFromUrl } from "@utils/common";
 import { NavLink, useNavigate, useParams } from "react-router";
 
-function PersonDetails() {
+function PersonDetailsCard() {
   const { id = "" } = useParams();
   const { isPending, data } = useQuery({
     queryKey: ["film", id],
@@ -33,6 +33,7 @@ function PersonDetails() {
     starships = [],
     homeworld = "",
   } = data ?? {};
+  console.log({ homeworld });
   const PERSON_DETAILS_INFO = [
     { label: "Height", value: height },
     { label: "Mass", value: mass },
@@ -44,7 +45,10 @@ function PersonDetails() {
     {
       label: "Homeworld",
       value: (
-        <NavLink to={`/films/${extractIdFromUrl(homeworld)}`} className="underline">
+        <NavLink
+          to={`/films/${extractIdFromUrl(homeworld)}`}
+          className="text-blue-600 underline hover:text-blue-800"
+        >
           Planets {extractIdFromUrl(homeworld)}
         </NavLink>
       ),
@@ -92,8 +96,12 @@ function PersonDetails() {
                     <h3 className="font-bold">Films</h3>
                     <ul className="list-disc pl-5 space-y-1">
                       {films?.slice(0, 7)?.map((filmUrl, index) => (
-                        <li key={`randomized-id-${index}`}>
-                          <NavLink to={`/films/${extractIdFromUrl(filmUrl)}`}>
+                        <li key={`randomized-id-${index}`} className="list-none">
+                          -{" "}
+                          <NavLink
+                            to={`/films/${extractIdFromUrl(filmUrl)}`}
+                            className="text-blue-600 underline hover:text-blue-800"
+                          >
                             Film {index + 1}
                           </NavLink>
                         </li>
@@ -106,8 +114,12 @@ function PersonDetails() {
                     <h3 className="font-bold">Planets</h3>
                     <ul className="list-disc pl-5 space-y-1">
                       {vehicles?.slice(0, 5).map((vehicleUrl, index) => (
-                        <li key={`randomized-id-${index}`}>
-                          <NavLink to={`/vehicles/${extractIdFromUrl(vehicleUrl)}`}>
+                        <li key={`randomized-id-${index}`} className="list-none">
+                          -{" "}
+                          <NavLink
+                            to={`/vehicles/${extractIdFromUrl(vehicleUrl)}`}
+                            className="text-blue-600 underline hover:text-blue-800"
+                          >
                             Vehicle {index + 1}
                           </NavLink>
                         </li>
@@ -120,8 +132,12 @@ function PersonDetails() {
                     <h3 className="font-bold">Species</h3>
                     <ul className="list-disc pl-5 space-y-1">
                       {starships?.slice(0, 6).map((starshipUrl, index) => (
-                        <li key={`randomized-id-${index}`}>
-                          <NavLink to={`/starships/${extractIdFromUrl(starshipUrl)}`}>
+                        <li key={`randomized-id-${index}`} className="list-none">
+                          -{" "}
+                          <NavLink
+                            to={`/starships/${extractIdFromUrl(starshipUrl)}`}
+                            className="text-blue-600 underline hover:text-blue-800"
+                          >
                             Starships {index + 1}
                           </NavLink>
                         </li>
@@ -138,4 +154,4 @@ function PersonDetails() {
   );
 }
 
-export default PersonDetails;
+export default PersonDetailsCard;
