@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FilmCard } from "./components/film-card";
 import Input from "@ui/input";
-import { getAllFilms, searchFilmByName } from "@services/film-service";
+import { getAllFilms, searchFilmsByName } from "@services/film-service";
 import { useQuery } from "@tanstack/react-query";
 import Skeleton from "@ui/skeleton";
 import { debounce } from "@utils/common";
@@ -14,7 +14,7 @@ function Films() {
 
   const { data, isPending } = useQuery({
     queryKey: ["films", searchTerm],
-    queryFn: () => (searchTerm ? searchFilmByName(searchTerm) : getAllFilms()),
+    queryFn: () => (searchTerm ? searchFilmsByName(searchTerm) : getAllFilms()),
   });
 
   return (
