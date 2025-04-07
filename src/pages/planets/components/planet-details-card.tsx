@@ -90,7 +90,7 @@ function PlanetDetailsCard() {
                 {residents.length > 0 && (
                   <div>
                     <h3 className="font-bold">Known Residents</h3>
-                    <ul className="list-disc pl-5 space-y-1">
+                    <ul className="list-disc space-y-1">
                       {residents?.slice(0, 5).map((residentUrl, index) => (
                         <li className="list-none">
                           -{" "}
@@ -108,7 +108,7 @@ function PlanetDetailsCard() {
                 {films.length > 0 && (
                   <div>
                     <h3 className="font-bold">Featured In Films</h3>
-                    <ul className="list-disc pl-5 space-y-1">
+                    <ul className="list-disc space-y-1">
                       {films?.slice(0, 6).map((filmUrl, index) => (
                         <li className="list-none">
                           -{" "}

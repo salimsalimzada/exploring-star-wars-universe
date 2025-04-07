@@ -94,7 +94,7 @@ function PersonDetailsCard() {
                 {films.length > 0 && (
                   <div>
                     <h3 className="font-bold">Films</h3>
-                    <ul className="list-disc pl-5 space-y-1">
+                    <ul className="list-disc space-y-1">
                       {films?.slice(0, 7)?.map((filmUrl, index) => (
                         <li key={`randomized-id-${index}`} className="list-none">
                           -{" "}
@@ -112,7 +112,7 @@ function PersonDetailsCard() {
                 {vehicles.length > 0 && (
                   <div>
                     <h3 className="font-bold">Planets</h3>
-                    <ul className="list-disc pl-5 space-y-1">
+                    <ul className="list-disc space-y-1">
                       {vehicles?.slice(0, 5).map((vehicleUrl, index) => (
                         <li key={`randomized-id-${index}`} className="list-none">
                           -{" "}
@@ -130,7 +130,7 @@ function PersonDetailsCard() {
                 {starships.length > 0 && (
                   <div>
                     <h3 className="font-bold">Species</h3>
-                    <ul className="list-disc pl-5 space-y-1">
+                    <ul className="list-disc space-y-1">
                       {starships?.slice(0, 6).map((starshipUrl, index) => (
                         <li key={`randomized-id-${index}`} className="list-none">
                           -{" "}
