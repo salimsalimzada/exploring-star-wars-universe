@@ -14,6 +14,7 @@ const PersonDetailsCard = lazy(() => import("@pages/people/components/person-det
 const StarshipDetailsCard = lazy(() => import("@pages/starships/components/starship-details-card"));
 const PlanetDetailsCard = lazy(() => import("@pages/planets/components/planet-details-card"));
 const VehicletailsCard = lazy(() => import("@pages/vehicles/components/vehicle-details-card"));
+const SpeciesDetailsCard = lazy(() => import("@pages/species/components/species-details-card"));
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="starships/:id" element={<StarshipDetailsCard />} />
           <Route path="planets/:id" element={<PlanetDetailsCard />} />
           <Route path="vehicles/:id" element={<VehicletailsCard />} />
+          <Route path="species/:id" element={<SpeciesDetailsCard />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
