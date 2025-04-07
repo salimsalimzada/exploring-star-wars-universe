@@ -44,7 +44,7 @@ function PersonDetailsCard() {
     { label: "Hair color", value: hairColor },
     {
       label: "Homeworld",
-      value: (
+      value: homeworld && (
         <NavLink
           to={`/films/${extractIdFromUrl(homeworld)}`}
           className="text-blue-600 underline hover:text-blue-800"
