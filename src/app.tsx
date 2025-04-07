@@ -8,6 +8,7 @@ const Planets = lazy(() => import("@pages/planets/page"));
 const Species = lazy(() => import("@pages/species/page"));
 const Starships = lazy(() => import("@pages/starships/page"));
 const Vehicles = lazy(() => import("@pages/vehicles/page"));
+const NotFound = lazy(() => import("@components/shared/not-found"));
 const FilmDetailsCard = lazy(() => import("@pages/films/components/film-details-card"));
 
 function App() {
@@ -17,12 +18,13 @@ function App() {
         <Route path="/" element={<AppLayout />}>
           <Route index element={<Navigate to="/films" replace />} />
           <Route path="films" element={<Films />} />
-          <Route path="films/:id" element={<FilmDetailsCard />} />
           <Route path="people" element={<People />} />
           <Route path="planets" element={<Planets />} />
           <Route path="species" element={<Species />} />
           <Route path="starships" element={<Starships />} />
           <Route path="vehicles" element={<Vehicles />} />
+          <Route path="films/:id" element={<FilmDetailsCard />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </Suspense>
