@@ -16,7 +16,7 @@ export const getFilmById = async (id: string) => {
   });
 };
 
-export const searchFilmByName = async (name: string) => {
+export const searchFilmsByName = async (name: string) => {
   const response = await serviceFetch<FilmResponseInfo>({
     method: "GET",
     endpoint: `films/?search=${name}`,
