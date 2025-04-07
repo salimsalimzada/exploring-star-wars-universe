@@ -19,10 +19,7 @@ function Films() {
 
   return (
     <div className="space-y-6">
-      <Input
-        placeholder="Type a film name..."
-        onChange={(e) => debouncedSearchTerm(e.target.value)}
-      />
+      <Input placeholder="Type a film name" onChange={(e) => debouncedSearchTerm(e.target.value)} />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {isPending &&
           Array.from({ length: 6 }).map((_, index) => (
