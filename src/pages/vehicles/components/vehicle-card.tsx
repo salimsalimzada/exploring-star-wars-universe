@@ -45,11 +45,7 @@ export const VehicleCard = ({ vehicleData }: VehicleCardProps) => {
       }
     >
       <div className="p-4 space-y-3">
-        <div className="space-y-2">
-          {FILM_INFO.map((film, index) => (
-            <InfoRow key={`my-extra-unique-id-${index}`} label={film.label} value={film.value} />
-          ))}
-        </div>
+        <InfoRow data={FILM_INFO} />
       </div>
     </Card>
   );

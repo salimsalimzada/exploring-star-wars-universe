@@ -1,5 +1,5 @@
-import { ErrorMessages } from "@constants/error-message";
 import { Component, ErrorInfo, ReactNode } from "react";
+import { ErrorMessages } from "@constants/error-message";
 
 type Props = {
   children: ReactNode;

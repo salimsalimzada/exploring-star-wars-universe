@@ -78,15 +78,7 @@ function PersonDetailsCard() {
             <div className="space-y-4">
               <div>
                 <h3 className="font-bold">Basic Info</h3>
-                <ul className="space-y-1">
-                  {PERSON_DETAILS_INFO.map((detail, index) => (
-                    <InfoRow
-                      key={`randomized-id-${index}`}
-                      label={detail.label}
-                      value={detail.value ?? ""}
-                    />
-                  ))}
-                </ul>
+                <InfoRow data={PERSON_DETAILS_INFO} />
               </div>
             </div>
             <div className="space-y-4">

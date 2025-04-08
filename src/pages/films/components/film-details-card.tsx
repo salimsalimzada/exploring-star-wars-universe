@@ -62,15 +62,7 @@ function FilmDetailsCard() {
             <div className="space-y-4">
               <div>
                 <h3 className="font-bold">Basic Info</h3>
-                <ul className="space-y-1">
-                  {FILM_DETAILS_INFO.map((detail, index) => (
-                    <InfoRow
-                      key={`my-unique-key-${index}`}
-                      label={detail.label}
-                      value={detail.value}
-                    />
-                  ))}
-                </ul>
+                <InfoRow data={FILM_DETAILS_INFO} />
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 <div>

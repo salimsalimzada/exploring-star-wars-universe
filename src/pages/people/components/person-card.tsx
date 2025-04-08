@@ -35,15 +35,7 @@ export const PersonCard = ({ personData }: PersonCardProps) => {
       }
     >
       <div className="p-4 space-y-3">
-        <div className="space-y-2">
-          {PERSON_INFO.map((person, index) => (
-            <InfoRow
-              key={`my-extra-unique-id-${index}`}
-              label={person.label}
-              value={person.value}
-            />
-          ))}
-        </div>
+        <InfoRow data={PERSON_INFO} />
       </div>
     </Card>
   );
