@@ -23,7 +23,7 @@ function PageHeader() {
           STAR WARS
         </Button>
 
-        <nav className="space-x-6">
+        <nav className="hidden sm:flex space-x-6">
           {MENU_LIST.map((item) => (
             <NavLink
               key={item.id}

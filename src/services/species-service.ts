@@ -1,12 +1,15 @@
 import { Species, SpeciesResponseInfo } from "@custom-types/species";
 import { serviceFetch } from "@utils/serviceFetch";
 
-export const getSpecies = async () => {
+export const getSpecies = async (page = 1) => {
   const response = await serviceFetch<SpeciesResponseInfo>({
     method: "GET",
-    endpoint: "species",
+    endpoint: `species/?page=${page}`,
   });
-  return response.results;
+  return {
+    ...response,
+    page,
+  };
 };
 
 export const getSpeciesById = async (id: string) => {
@@ -16,10 +19,13 @@ export const getSpeciesById = async (id: string) => {
   });
 };
 
-export const searchSpecies = async (searchTerm: string) => {
+export const searchSpecies = async (searchTerm: string, page = 1) => {
   const response = await serviceFetch<SpeciesResponseInfo>({
     method: "GET",
-    endpoint: `species/?search=${searchTerm}`,
+    endpoint: `species/?search=${searchTerm}&page=${page}`,
   });
-  return response.results;
+  return {
+    ...response,
+    page,
+  };
 };

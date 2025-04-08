@@ -1,12 +1,15 @@
 import { Planet, PlanetResponseInfo } from "@custom-types/planet";
 import { serviceFetch } from "@utils/serviceFetch";
 
-export const getPlanets = async () => {
+export const getPlanets = async (page = 1) => {
   const response = await serviceFetch<PlanetResponseInfo>({
     method: "GET",
-    endpoint: "planets",
+    endpoint: `planets/?page=${page}`,
   });
-  return response.results;
+  return {
+    ...response,
+    page: page,
+  };
 };
 
 export const getPlanetById = async (id: string) => {
@@ -16,10 +19,13 @@ export const getPlanetById = async (id: string) => {
   });
 };
 
-export const searchPlanets = async (searchTerm: string) => {
+export const searchPlanets = async (searchTerm: string, page = 1) => {
   const response = await serviceFetch<PlanetResponseInfo>({
     method: "GET",
-    endpoint: `planets/?search=${searchTerm}`,
+    endpoint: `planets/?search=${searchTerm}&page=${page}`,
   });
-  return response.results;
+  return {
+    ...response,
+    page: page,
+  };
 };

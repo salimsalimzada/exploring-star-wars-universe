@@ -1,12 +1,15 @@
 import { Vehicle, VehicleResponseInfo } from "@custom-types/vehicle";
 import { serviceFetch } from "@utils/serviceFetch";
 
-export const getVehicles = async () => {
+export const getVehicles = async (page = 1) => {
   const response = await serviceFetch<VehicleResponseInfo>({
     method: "GET",
-    endpoint: "vehicles",
+    endpoint: `vehicles/?page=${page}`,
   });
-  return response.results;
+  return {
+    ...response,
+    page: page,
+  };
 };
 
 export const getVehicleById = async (id: string) => {
@@ -16,10 +19,13 @@ export const getVehicleById = async (id: string) => {
   });
 };
 
-export const searchVehicles = async (searchTerm: string) => {
+export const searchVehicles = async (searchTerm: string, page = 1) => {
   const response = await serviceFetch<VehicleResponseInfo>({
     method: "GET",
-    endpoint: `vehicles/?search=${searchTerm}`,
+    endpoint: `vehicles/?search=${searchTerm}&page=${page}`,
   });
-  return response.results;
+  return {
+    ...response,
+    page: page,
+  };
 };

@@ -1,12 +1,15 @@
 import { PeopleResponseInfo, Person } from "@custom-types/person";
 import { serviceFetch } from "@utils/serviceFetch";
 
-export const getPeople = async () => {
+export const getPeople = async (page = 1) => {
   const response = await serviceFetch<PeopleResponseInfo>({
     method: "GET",
-    endpoint: "people",
+    endpoint: `people/?page=${page}`,
   });
-  return response.results;
+  return {
+    ...response,
+    page: page,
+  };
 };
 
 export const getPersonById = async (id: string) => {
@@ -16,10 +19,13 @@ export const getPersonById = async (id: string) => {
   });
 };
 
-export const searchPeopleByName = async (name: string) => {
+export const searchPeopleByName = async (name: string, page = 1) => {
   const response = await serviceFetch<PeopleResponseInfo>({
     method: "GET",
-    endpoint: `people/?search=${name}`,
+    endpoint: `people/?search=${name}&page=${page}`,
   });
-  return response.results;
+  return {
+    ...response,
+    page: page,
+  };
 };

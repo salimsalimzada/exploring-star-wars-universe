@@ -1,12 +1,15 @@
 import { Starship, StarshipResponseInfo } from "@custom-types/starship";
 import { serviceFetch } from "@utils/serviceFetch";
 
-export const getStarships = async () => {
+export const getStarships = async (page = 1) => {
   const response = await serviceFetch<StarshipResponseInfo>({
     method: "GET",
-    endpoint: "starships",
+    endpoint: `starships/?page=${page}`,
   });
-  return response.results;
+  return {
+    ...response,
+    page,
+  };
 };
 
 export const getStarshipById = async (id: string) => {
@@ -16,10 +19,13 @@ export const getStarshipById = async (id: string) => {
   });
 };
 
-export const searchStarships = async (searchTerm: string) => {
+export const searchStarships = async (searchTerm: string, page = 1) => {
   const response = await serviceFetch<StarshipResponseInfo>({
     method: "GET",
-    endpoint: `starships/?search=${searchTerm}`,
+    endpoint: `starships/?search=${searchTerm}&page=${page}`,
   });
-  return response.results;
+  return {
+    ...response,
+    page,
+  };
 };
