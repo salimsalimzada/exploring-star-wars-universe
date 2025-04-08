@@ -1,4 +1,4 @@
-import { AppError } from "./common";
+import { AppError } from "@common/AppError";
 import { ErrorMessages } from "@constants/error-message";
 import { ApiConfig, HttpMethods, StatusCode } from "@custom-types/common";
 
@@ -30,6 +30,9 @@ export const serviceFetch = async <TResponse, TRequest = undefined>({
 
     return await response.json();
   } catch (error: unknown) {
+    if (error instanceof AppError) {
+      throw error;
+    }
     throw new AppError(ErrorMessages.INTERNAL_ERROR, StatusCode.UNKNOWN, (error as Error).message);
   }
 };
