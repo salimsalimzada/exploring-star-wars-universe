@@ -1,7 +1,7 @@
 import NoResults from "@components/shared/no-results";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import Input from "@ui/input";
-import { debounce } from "@utils/common";
+import { debounce } from "@utils/debounce";
 import { useEffect, useMemo, useState } from "react";
 import { PlanetCard } from "./components/planet-card";
 import { getPlanets, searchPlanets } from "@services/planet-service";
@@ -38,19 +38,22 @@ function Planets() {
 
   const isPending = status === Status.Pending;
   const isError = status === Status.Error;
+
+  console.log({ isPending });
   return (
     <div className="space-y-6">
       <Input
         placeholder="Type a planet name"
         onChange={(e) => debouncedSearchTerm(e.target.value)}
       />
-      {isError && <div className="text-red-600">Error: {error.message}</div>}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-items-center">
+        <LoadingIndicator loading={isPending} />
         {allPlanets.map((planet, index) => (
           <PlanetCard key={`my-secret-unique-id-${index}`} planetData={planet} />
         ))}
         {!isPending && allPlanets.length === 0 && <NoResults />}
+        {isError && <div className="text-red-600">Error: {error.message}</div>}
       </div>
       <div ref={ref} className="py-4 text-center">
         <LoadingIndicator loading={isFetchingNextPage} />

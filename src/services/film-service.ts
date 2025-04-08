@@ -1,5 +1,5 @@
 import { Film, FilmResponseInfo } from "@custom-types/film";
-import { serviceFetch } from "@utils/serviceFetch";
+import { serviceFetch } from "@utils/service-fetch";
 
 export const getAllFilms = async () => {
   const response = await serviceFetch<FilmResponseInfo>({

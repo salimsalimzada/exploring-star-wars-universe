@@ -1,5 +1,5 @@
 import { Planet, PlanetResponseInfo } from "@custom-types/planet";
-import { serviceFetch } from "@utils/serviceFetch";
+import { serviceFetch } from "@utils/service-fetch";
 
 export const getPlanets = async (page = 1) => {
   const response = await serviceFetch<PlanetResponseInfo>({

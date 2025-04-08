@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import Button from "@ui/button";
 import Card from "@ui/card";
 import Skeleton from "@ui/skeleton";
-import { extractIdFromUrl } from "@utils/common";
+import { extractIdFromUrl } from "@utils/url";
 import { NavLink, useNavigate, useParams } from "react-router";
 
 function PersonDetailsCard() {

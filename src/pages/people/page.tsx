@@ -2,7 +2,7 @@ import NoResults from "@components/shared/no-results";
 import { getPeople, searchPeopleByName } from "@services/person-service";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import Input from "@ui/input";
-import { debounce } from "@utils/common";
+import { debounce } from "@utils/debounce";
 import { useEffect, useMemo, useState } from "react";
 import { PersonCard } from "./components/person-card";
 import { useInView } from "react-intersection-observer";
@@ -45,14 +45,14 @@ function People() {
         onChange={(e) => debouncedSearchTerm(e.target.value)}
       />
 
-      {isError && <div className="text-red-600">Error: {error.message}</div>}
-
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-items-center">
+        <LoadingIndicator loading={isPending} />
         {allPeople.map((person, index) => (
           <PersonCard key={`person-${person.url || index}`} personData={person} />
         ))}
 
         {!isPending && allPeople.length === 0 && <NoResults />}
+        {isError && <div className="text-red-600">Error: {error.message}</div>}
       </div>
 
       <div ref={ref} className="py-4 text-center">

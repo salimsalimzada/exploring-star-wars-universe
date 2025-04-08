@@ -2,7 +2,7 @@ import { InfoRow } from "@components/shared/info-row";
 import { Species } from "@custom-types/species";
 import Button from "@ui/button";
 import Card from "@ui/card";
-import { extractIdFromUrl } from "@utils/common";
+import { extractIdFromUrl } from "@utils/url";
 import { NavLink } from "react-router";
 
 type SpeciesCardProps = {

@@ -1,5 +1,5 @@
 import { Starship, StarshipResponseInfo } from "@custom-types/starship";
-import { serviceFetch } from "@utils/serviceFetch";
+import { serviceFetch } from "@utils/service-fetch";
 
 export const getStarships = async (page = 1) => {
   const response = await serviceFetch<StarshipResponseInfo>({

@@ -1,4 +1,4 @@
-import { extractIdFromUrl } from "@utils/common";
+import { extractIdFromUrl } from "@utils/url";
 import { NavLink } from "react-router";
 
 type LinkListItemProps = {

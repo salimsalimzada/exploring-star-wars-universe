@@ -1,5 +1,5 @@
 import { Species, SpeciesResponseInfo } from "@custom-types/species";
-import { serviceFetch } from "@utils/serviceFetch";
+import { serviceFetch } from "@utils/service-fetch";
 
 export const getSpecies = async (page = 1) => {
   const response = await serviceFetch<SpeciesResponseInfo>({

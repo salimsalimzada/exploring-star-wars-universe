@@ -2,7 +2,8 @@ import { InfoRow } from "@components/shared/info-row";
 import { Film } from "@custom-types/film";
 import Button from "@ui/button";
 import Card from "@ui/card";
-import { extractIdFromUrl, getElapsedTime } from "@utils/common";
+import { getElapsedTime } from "@utils/date";
+import { extractIdFromUrl } from "@utils/url";
 import { NavLink } from "react-router";
 
 type FilmCardProps = {

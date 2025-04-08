@@ -1,5 +1,5 @@
 import { PeopleResponseInfo, Person } from "@custom-types/person";
-import { serviceFetch } from "@utils/serviceFetch";
+import { serviceFetch } from "@utils/service-fetch";
 
 export const getPeople = async (page = 1) => {
   const response = await serviceFetch<PeopleResponseInfo>({

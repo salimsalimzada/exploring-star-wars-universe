@@ -1,7 +1,7 @@
 import NoResults from "@components/shared/no-results";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import Input from "@ui/input";
-import { debounce } from "@utils/common";
+import { debounce } from "@utils/debounce";
 import { useEffect, useMemo, useState } from "react";
 import { VehicleCard } from "./components/vehicle-card";
 import { getVehicles, searchVehicles } from "@services/vehicle-service";
@@ -43,13 +43,14 @@ function Vehicles() {
         placeholder="Type a vehicles model or name"
         onChange={(e) => debouncedSearchTerm(e.target.value)}
       />
-      {isError && <div className="text-red-600">Error: {error.message}</div>}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-items-center">
+        <LoadingIndicator loading={isPending} />
         {allVehicles.map((vehicle, index) => (
           <VehicleCard key={`my-secret-unique-id-${index}`} vehicleData={vehicle} />
         ))}
         {!isPending && allVehicles.length === 0 && <NoResults />}
+        {isError && <div className="text-red-600">Error: {error.message}</div>}
       </div>
       <div ref={ref} className="py-4 text-center">
         <LoadingIndicator loading={isFetchingNextPage} />

@@ -2,7 +2,7 @@ import NoResults from "@components/shared/no-results";
 import { getStarships, searchStarships } from "@services/starship-service";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import Input from "@ui/input";
-import { debounce } from "@utils/common";
+import { debounce } from "@utils/debounce";
 import { useEffect, useMemo, useState } from "react";
 import { StarshipCard } from "./components/starship-card";
 import { useInView } from "react-intersection-observer";
@@ -43,13 +43,14 @@ function Starships() {
         placeholder="Type a starship model or name"
         onChange={(e) => debouncedSearchTerm(e.target.value)}
       />
-      {isError && <div className="text-red-600">Error: {error.message}</div>}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-items-center ">
+        <LoadingIndicator loading={isPending} />
         {allStarships.map((starship, index) => (
           <StarshipCard key={`my-secret-unique-id-${index}`} starshipData={starship} />
         ))}
         {!isPending && allStarships.length === 0 && <NoResults />}
+        {isError && <div className="text-red-600">Error: {error.message}</div>}
       </div>
       <div ref={ref} className="py-4 text-center">
         <LoadingIndicator loading={isFetchingNextPage} />

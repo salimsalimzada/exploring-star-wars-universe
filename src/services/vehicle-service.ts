@@ -1,5 +1,5 @@
 import { Vehicle, VehicleResponseInfo } from "@custom-types/vehicle";
-import { serviceFetch } from "@utils/serviceFetch";
+import { serviceFetch } from "@utils/service-fetch";
 
 export const getVehicles = async (page = 1) => {
   const response = await serviceFetch<VehicleResponseInfo>({
