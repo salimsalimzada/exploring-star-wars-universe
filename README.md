@@ -11,8 +11,6 @@ This served as a visual guide during the early stages of development:
 
 ## Screenshots
 
-![planets-page](./src/assets/planets-page.png)
-![planet-details-age](./src/assets/planet-details-page.png)
 ![species-page](./src/assets/species-page.png)
 ![species-details-page](./src/assets/species-details-page.png)
 
