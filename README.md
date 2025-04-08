@@ -1,6 +1,10 @@
-# Star Wars API Web Application
+# Exploring Star Wars
 
 This repository contains the implementation of a technical task provided by PASHA Insurance as part of their interview process. The code is for evaluation purposes only and is **not intended for production use**.
+
+## 🚀 Live Demo
+
+- 🔗 [Live Demo](https://exploring-star-wars-universe.netlify.app/)
 
 ## 🖼️ Wireframe
 
@@ -11,8 +15,8 @@ This served as a visual guide during the early stages of development:
 
 ## Screenshots
 
-![species-page](./src/assets/species-page.png)
-![species-details-page](./src/assets/species-details-page.png)
+![planets-page](./src/assets/planets-page.png)
+![planet-details-page](./src/assets/planet-details-page.png)
 
 ## Features
 
