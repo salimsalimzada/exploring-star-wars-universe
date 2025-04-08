@@ -2,7 +2,6 @@ import NoResults from "@components/shared/no-results";
 import { getPeople, searchPeopleByName } from "@services/person-service";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import Input from "@ui/input";
-import Skeleton from "@ui/skeleton";
 import { debounce } from "@utils/common";
 import { useEffect, useMemo, useState } from "react";
 import { PersonCard } from "./components/person-card";
@@ -48,16 +47,9 @@ function People() {
 
       {isError && <div className="text-red-600">Error: {error.message}</div>}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {isPending &&
-          Array.from({ length: 6 }).map((_, index) => (
-            <Skeleton loading active rows={12} key={index} />
-          ))}
-
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-items-center">
         {allPeople.map((person, index) => (
-          <div>
-            <PersonCard key={`person-${person.url || index}`} personData={person} />
-          </div>
+          <PersonCard key={`person-${person.url || index}`} personData={person} />
         ))}
 
         {!isPending && allPeople.length === 0 && <NoResults />}

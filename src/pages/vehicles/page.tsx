@@ -1,7 +1,6 @@
 import NoResults from "@components/shared/no-results";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import Input from "@ui/input";
-import Skeleton from "@ui/skeleton";
 import { debounce } from "@utils/common";
 import { useEffect, useMemo, useState } from "react";
 import { VehicleCard } from "./components/vehicle-card";
@@ -46,12 +45,7 @@ function Vehicles() {
       />
       {isError && <div className="text-red-600">Error: {error.message}</div>}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {isPending &&
-          Array.from({ length: 6 }).map((_, index) => (
-            <Skeleton loading active rows={12} key={index} />
-          ))}
-
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-items-center">
         {allVehicles.map((vehicle, index) => (
           <VehicleCard key={`my-secret-unique-id-${index}`} vehicleData={vehicle} />
         ))}

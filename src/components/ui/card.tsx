@@ -12,7 +12,9 @@ function Card({
   className?: string;
 }) {
   return (
-    <article className={`max-w-2xs rounded-lg bg-white shadow-md ${className} flex flex-col`}>
+    <article
+      className={`w-full max-w-2xs rounded-lg bg-white shadow-md flex flex-col ${className}`}
+    >
       {title && (
         <header className="p-4 flex items-center justify-between border-b border-gray-300">
           {title}
