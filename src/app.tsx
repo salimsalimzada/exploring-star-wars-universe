@@ -1,4 +1,4 @@
-import AppLayout from "@pages/layout";
+import AppLayout from "@components/shared/layout";
 import { lazy } from "react";
 import { Navigate, Route, Routes } from "react-router";
 
