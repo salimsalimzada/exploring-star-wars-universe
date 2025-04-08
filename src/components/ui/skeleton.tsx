@@ -1,12 +1,12 @@
 import { ReactNode } from "react";
 
-type SkeletonProps = {
-  loading?: boolean;
-  active?: boolean;
-  children?: ReactNode;
-  rows?: number;
-  className?: string;
-};
+type SkeletonProps = Partial<{
+  loading: boolean;
+  active: boolean;
+  children: ReactNode;
+  rows: number;
+  className: string;
+}>;
 
 function Skeleton({
   loading = false,

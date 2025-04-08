@@ -1,16 +1,12 @@
 import { ReactNode } from "react";
 
-function Card({
-  title,
-  children,
-  footer,
-  className = "",
-}: {
-  title?: ReactNode;
-  children?: ReactNode;
-  footer?: ReactNode;
-  className?: string;
-}) {
+type CardProps = Partial<{
+  title: ReactNode;
+  children: ReactNode;
+  footer: ReactNode;
+  className: string;
+}>;
+function Card({ title, children, footer, className = "" }: CardProps) {
   return (
     <article
       className={`w-full max-w-2xs rounded-lg bg-white shadow-md flex flex-col ${className}`}

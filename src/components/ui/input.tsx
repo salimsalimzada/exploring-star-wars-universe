@@ -1,15 +1,15 @@
 import { ChangeEvent, ForwardedRef, forwardRef } from "react";
 
-type InputProps = {
-  htmlFor?: string;
-  id?: string;
-  name?: string;
-  placeholder?: string;
-  label?: string;
-  className?: string;
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
-  value?: string;
-};
+type InputProps = Partial<{
+  htmlFor: string;
+  id: string;
+  name: string;
+  placeholder: string;
+  label: string;
+  className: string;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  value: string;
+}>;
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
   (
