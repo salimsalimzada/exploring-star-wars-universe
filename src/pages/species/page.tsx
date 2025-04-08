@@ -8,6 +8,7 @@ import { SpeciesCard } from "./components/species-card";
 import { getSpecies, searchSpecies } from "@services/species-service";
 import { useInView } from "react-intersection-observer";
 import { LoadingIndicator } from "@components/shared/loading-indicator";
+import { Status } from "@custom-types/common";
 
 function Species() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -35,8 +36,8 @@ function Species() {
     return data?.pages.flatMap((page) => page.results) || [];
   }, [data]);
 
-  const isPending = status === "pending";
-  const isError = status === "error";
+  const isPending = status === Status.Pending;
+  const isError = status === Status.Error;
   return (
     <div className="space-y-6">
       <Input
@@ -54,7 +55,7 @@ function Species() {
         {allSpecies.map((species, index) => (
           <SpeciesCard key={`my-secret-unique-id-${index}`} speciesData={species} />
         ))}
-        {allSpecies.length === 0 && !isPending && <NoResults />}
+        {!isPending && allSpecies.length === 0 && <NoResults />}
       </div>
       <div ref={ref} className="py-4 text-center">
         <LoadingIndicator loading={isFetchingNextPage} />

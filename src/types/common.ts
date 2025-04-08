@@ -28,3 +28,8 @@ export interface BasePaginatedResponse<T> {
   previous: string | null;
   results: T[];
 }
+
+export enum Status {
+  Pending = "pending",
+  Error = "error",
+}

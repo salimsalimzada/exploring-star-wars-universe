@@ -8,6 +8,7 @@ import { VehicleCard } from "./components/vehicle-card";
 import { getVehicles, searchVehicles } from "@services/vehicle-service";
 import { useInView } from "react-intersection-observer";
 import { LoadingIndicator } from "@components/shared/loading-indicator";
+import { Status } from "@custom-types/common";
 
 function Vehicles() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -35,8 +36,8 @@ function Vehicles() {
     return data?.pages.flatMap((page) => page.results) || [];
   }, [data]);
 
-  const isPending = status === "pending";
-  const isError = status === "error";
+  const isPending = status === Status.Pending;
+  const isError = status === Status.Error;
   return (
     <div className="space-y-6">
       <Input
@@ -54,7 +55,7 @@ function Vehicles() {
         {allVehicles.map((vehicle, index) => (
           <VehicleCard key={`my-secret-unique-id-${index}`} vehicleData={vehicle} />
         ))}
-        {allVehicles.length === 0 && !isPending && <NoResults />}
+        {!isPending && allVehicles.length === 0 && <NoResults />}
       </div>
       <div ref={ref} className="py-4 text-center">
         <LoadingIndicator loading={isFetchingNextPage} />

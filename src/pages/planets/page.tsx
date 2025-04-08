@@ -8,6 +8,7 @@ import { PlanetCard } from "./components/planet-card";
 import { getPlanets, searchPlanets } from "@services/planet-service";
 import { useInView } from "react-intersection-observer";
 import { LoadingIndicator } from "@components/shared/loading-indicator";
+import { Status } from "@custom-types/common";
 
 function Planets() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -36,8 +37,8 @@ function Planets() {
     return data?.pages.flatMap((page) => page.results) || [];
   }, [data]);
 
-  const isPending = status === "pending";
-  const isError = status === "error";
+  const isPending = status === Status.Pending;
+  const isError = status === Status.Error;
   return (
     <div className="space-y-6">
       <Input
@@ -55,7 +56,7 @@ function Planets() {
         {allPlanets.map((planet, index) => (
           <PlanetCard key={`my-secret-unique-id-${index}`} planetData={planet} />
         ))}
-        {allPlanets.length === 0 && !isPending && <NoResults />}
+        {!isPending && allPlanets.length === 0 && <NoResults />}
       </div>
       <div ref={ref} className="py-4 text-center">
         <LoadingIndicator loading={isFetchingNextPage} />

@@ -8,6 +8,7 @@ import { useEffect, useMemo, useState } from "react";
 import { StarshipCard } from "./components/starship-card";
 import { useInView } from "react-intersection-observer";
 import { LoadingIndicator } from "@components/shared/loading-indicator";
+import { Status } from "@custom-types/common";
 
 function Starships() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -35,8 +36,8 @@ function Starships() {
     return data?.pages.flatMap((page) => page.results) || [];
   }, [data]);
 
-  const isPending = status === "pending";
-  const isError = status === "error";
+  const isPending = status === Status.Pending;
+  const isError = status === Status.Error;
   return (
     <div className="space-y-6">
       <Input
@@ -45,7 +46,7 @@ function Starships() {
       />
       {isError && <div className="text-red-600">Error: {error.message}</div>}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 place-items-center">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
         {isPending &&
           Array.from({ length: 6 }).map((_, index) => (
             <Skeleton loading active rows={12} key={index} />
@@ -54,7 +55,7 @@ function Starships() {
         {allStarships.map((starship, index) => (
           <StarshipCard key={`my-secret-unique-id-${index}`} starshipData={starship} />
         ))}
-        {allStarships.length === 0 && !isPending && <NoResults />}
+        {!isPending && allStarships.length === 0 && <NoResults />}
       </div>
       <div ref={ref} className="py-4 text-center">
         <LoadingIndicator loading={isFetchingNextPage} />
