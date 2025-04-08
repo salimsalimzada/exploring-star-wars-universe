@@ -39,7 +39,6 @@ function Planets() {
   const isPending = status === Status.Pending;
   const isError = status === Status.Error;
 
-  console.log({ isPending });
   return (
     <div className="space-y-6">
       <Input
