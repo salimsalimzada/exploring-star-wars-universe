@@ -1,12 +1,33 @@
-import { Primitive } from "@custom-types/common";
 import { ReactNode } from "react";
+import { Primitive } from "@custom-types/common";
 
-type InfoRowProps = {
+type InfoRowItem = {
   label: string;
   value: Primitive | ReactNode;
 };
-export const InfoRow = ({ label, value }: InfoRowProps) => (
-  <p>
-    <span className="font-bold">{label}:</span> <span className="break-words">{value}</span>
-  </p>
-);
+
+type InfoRowProps =
+  | { data: InfoRowItem[] }
+  | { label: string; value: Primitive | ReactNode; data?: never };
+
+export const InfoRow = (props: InfoRowProps) => {
+  if (props.data) {
+    return (
+      <ul className="space-y-2">
+        {props.data.map((item, index) => (
+          <li key={`my-extra-unique-id-${index}`}>
+            <span className="font-bold">{item.label}:</span>{" "}
+            <span className="break-words">{item.value}</span>
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
+  return (
+    <p>
+      <span className="font-bold">{props.label}:</span>{" "}
+      <span className="break-words">{props.value}</span>
+    </p>
+  );
+};
