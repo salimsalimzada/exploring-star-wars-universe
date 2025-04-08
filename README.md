@@ -6,6 +6,15 @@ This repository contains the implementation of a technical task provided by PASH
 
 - 🔗 [Live Demo](https://exploring-star-wars-universe.netlify.app/)
 
+## 🛠 Tech Stack
+
+- Vite
+- React + TypeScript
+- Tailwind CSS
+- TanStack Query
+- React Router
+- ESLint + Prettier + Husky + lint-staged
+
 ## 🖼️ Wireframe
 
 Here's the initial wireframe I created for the **Planets** list and details pages.  
@@ -31,9 +40,12 @@ The application includes separate pages for each of the following resources:
 - **Species**: Shows various species in Star Wars.
 - **Planets**: Displays information about different planets in the Star Wars galaxy.
 
+> Powered by the [Star Wars API (SWAPI)](https://swapi.dev/)
+
 ### Infinite Scrolling
 
-The application dynamically fetches and displays resources as the user scrolls down the page, improving the user experience without requiring a page reload.
+The application dynamically fetches and displays resources as the user scrolls down the page, improving the user experience without requiring a page reload.  
+Infinite scroll is powered by the [`@intersection-observer`](https://www.npmjs.com/package/intersection-observer) package.
 
 ### Custom UI Components
 
