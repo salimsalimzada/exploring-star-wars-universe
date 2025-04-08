@@ -39,17 +39,20 @@ The application dynamically fetches and displays resources as the user scrolls d
 
 The application is designed with **custom, reusable components**, ensuring a consistent and maintainable user interface.
 
-### State Management and Data Fetching
+### Data Fetching
 
-- **Tanstack Query** is used for data fetching from the Star Wars API to optimize network calls and data management.
+- Utilized **Tanstack Query** for efficient and optimized data fetching.
+- Created a custom `service-fetch` utility to simplify API integration and error handling.
 
 ### Performance Optimization and Error Handling
 
-- **Lazy Loading**, **Suspense**, and **Error Boundaries** were implemented to enhance performance, handle errors, and improve overall user experience.
+- **Lazy Loading** for route-based components to reduce initial bundle size.
+- **React Suspense** for loading fallback UIs.
+- **Error Boundaries** to catch and gracefully handle component tree errors.
 
-### Testing
+### 🧪 Testing
 
-- Test cases were written for utility functions to ensure the correctness and maintainability of the codebase.
+- Wrote test cases for utility functions to ensure reliability and maintainability.
 
 ### Code Quality
 
@@ -91,3 +94,8 @@ Below are the key environment variables that need to be set (also listed in `.en
 - `VITE_BASE_URL=<your-base-url>`
 
 Please refer to the `.env.example` file for any additional configuration.
+
+## 📝 License
+
+This project was developed as part of a technical task for **PASHA Insurance**. It is for **evaluation purposes only** and **not intended for production use**.  
+The code and content are **not licensed** for commercial or production deployment.
